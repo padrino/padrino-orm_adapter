@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe OrmAdapter do
-  subject { OrmAdapter }
+describe Padrino::OrmAdapter do
+  subject { Padrino::OrmAdapter }
   
   describe "when a new adapter is created (by inheriting form OrmAdapter::Base)" do
-    let!(:adapter) { Class.new(OrmAdapter::Base) }
+    let!(:adapter) { Class.new(Padrino::OrmAdapter::Base) }
     
     its(:adapters) { should include(adapter) }
     
-    after { OrmAdapter.adapters.delete(adapter) }
+    after { Padrino::OrmAdapter.adapters.delete(adapter) }
   end
 end

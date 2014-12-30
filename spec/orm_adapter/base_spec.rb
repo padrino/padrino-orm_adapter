@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe OrmAdapter::Base do
-  subject { OrmAdapter::Base.new(Object) }
+describe Padrino::OrmAdapter::Base do
+  subject { Padrino::OrmAdapter::Base.new(Object) }
 
   describe "#extract_conditions!" do
     let(:conditions) { {:foo => 'bar'} }

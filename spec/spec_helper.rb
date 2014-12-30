@@ -11,4 +11,4 @@ $:.unshift(File.dirname(__FILE__) + '/../lib')
   end
 end
 
-require 'orm_adapter'
+require 'padrino-orm_adapter'

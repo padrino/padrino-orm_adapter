@@ -8,7 +8,7 @@ end
 require 'rake'
 require 'rspec/core/rake_task'
 $:.push File.expand_path("../lib", __FILE__)
-require "orm_adapter/version"
+require "padrino/orm_adapter/version"
 
 task :default => :spec
 

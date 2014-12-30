@@ -34,7 +34,7 @@ shared_examples_for "example app with orm_adapter" do
     subject { note_class }
 
     it "#to_adapter should return an adapter instance" do
-      subject.to_adapter.should be_a(OrmAdapter::Base)
+      subject.to_adapter.should be_a(Padrino::OrmAdapter::Base)
     end
 
     it "#to_adapter should return an adapter for the receiver" do

@@ -27,7 +27,7 @@ else
       many_to_one :owner, :class => User
     end
 
-    describe OrmAdapter::Sequel do
+    describe Padrino::OrmAdapter::Sequel do
       before do
         User.truncate
         Note.truncate

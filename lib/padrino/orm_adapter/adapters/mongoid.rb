@@ -3,10 +3,10 @@ require 'mongoid'
 module Mongoid
   module Document
     module ClassMethods
-      include OrmAdapter::ToAdapter
+      include Padrino::OrmAdapter::ToAdapter
     end
 
-    class OrmAdapter < ::OrmAdapter::Base
+    class OrmAdapter < Padrino::OrmAdapter::Base
       # get a list of column names for a given class
       def column_names
         klass.fields.keys
