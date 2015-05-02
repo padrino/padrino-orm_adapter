@@ -1,10 +1,10 @@
-= ORM Adapter {<img src="https://secure.travis-ci.org/ianwhite/orm_adapter.png?branch=master" alt="Build Status" />}[http://travis-ci.org/ianwhite/orm_adapter]
+= Padrino ORM Adapter {<img src="https://secure.travis-ci.org/padrino/padrino-orm_adapter.png?branch=master" alt="Build Status" />}[http://travis-ci.org/padrino/padrino-orm_adapter]
 
 Provides a single point of entry for popular ruby ORMs.  Its target audience is gem authors who want to support more than one ORM.
 
 == Example of use
 
-  require 'orm_adapter'
+  require 'padrino/orm_adapter'
 
   User # is it an ActiveRecord, DM Resource, MongoMapper or MongoId Document?
 
@@ -30,7 +30,7 @@ Currently supported ORMs are *ActiveRecord*, *DataMapper*, *MongoMapper*, and *M
 
 We welcome you to write new adapters as gems. ORM Adapter will stay focused in having these major ORMs working. Other adapters will be named <tt>orm_adapter-somedatabase</tt>, you can find the ones available {on rubygems}[https://rubygems.org/search?query=orm_adapter-].
 
-To write an adapter look at <tt>lib/orm_adapter/adapters/active_record.rb</tt> for an example of implementation.  To see how to test it, look at <tt>spec/orm_adapter/example_app_shared.rb</tt>, <tt>spec/orm_adapter/adapters/active_record_spec.rb</tt>.  You'll need to require the target ORM in <tt>spec/spec_helper.rb</tt>
+To write an adapter look at <tt>lib/padrino/orm_adapter/adapters/active_record.rb</tt> for an example of implementation.  To see how to test it, look at <tt>spec/orm_adapter/example_app_shared.rb</tt>, <tt>spec/orm_adapter/adapters/active_record_spec.rb</tt>.  You'll need to require the target ORM in <tt>spec/spec_helper.rb</tt>
 
 
 == Goals
