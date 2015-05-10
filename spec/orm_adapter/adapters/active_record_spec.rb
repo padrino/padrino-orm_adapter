@@ -49,11 +49,11 @@ else
           let(:adapter) { PerverseNote.to_adapter }
 
           it "should convert polymorphic object in conditions to the appropriate fields" do
-            adapter.send(:conditions_to_fields, :pwner => user).should == {'owner_id' => user.id, 'owner_type' => user.class.name}
+            expect(adapter.send(:conditions_to_fields, :pwner => user)).to eq({'owner_id' => user.id, 'owner_type' => user.class.name})
           end
 
           it "should convert belongs_to object in conditions to the appropriate fields" do
-            adapter.send(:conditions_to_fields, :user => user).should == {'owner_id' => user.id}
+            expect(adapter.send(:conditions_to_fields, :user => user)).to eq({'owner_id' => user.id})
           end
         end
       end

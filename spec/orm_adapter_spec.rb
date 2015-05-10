@@ -6,7 +6,10 @@ describe Padrino::OrmAdapter do
   describe "when a new adapter is created (by inheriting form OrmAdapter::Base)" do
     let!(:adapter) { Class.new(Padrino::OrmAdapter::Base) }
     
-    its(:adapters) { should include(adapter) }
+    describe '#adapters' do
+      subject { super().adapters }
+      it { is_expected.to include(adapter) }
+    end
     
     after { Padrino::OrmAdapter.adapters.delete(adapter) }
   end
