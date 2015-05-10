@@ -30,6 +30,12 @@ shared_examples_for "example app with orm_adapter" do
     model.class.find(model.id)
   end
 
+  def skip(*orms)
+    if orms.any? { |orm| described_class.to_s.split(/::/).include?(orm.to_s.camelize) }
+      pending "This feature isn't supported by #{orms * ','}"
+    end
+  end
+
   describe "an ORM class" do
     subject { note_class }
 
@@ -94,12 +100,14 @@ shared_examples_for "example app with orm_adapter" do
         end
 
         it 'should return the first model if no conditions passed' do
+          skip :dynamoid
           user = create_model(user_class)
           create_model(user_class)
           user_adapter.find_first.should == user
         end
 
         it "when conditions contain associated object, should return first model if it exists" do
+          skip :dynamoid
           user = create_model(user_class)
           note = create_model(note_class, :owner => user)
           note_adapter.find_first(:owner => user).should == note
@@ -151,6 +159,7 @@ shared_examples_for "example app with orm_adapter" do
         end
 
         it "when conditions contain associated object, should return first model if it exists" do
+          skip :dynamoid
           user1, user2 = create_model(user_class), create_model(user_class)
           note1 = create_model(note_class, :owner => user1)
           note2 = create_model(note_class, :owner => user2)
@@ -188,6 +197,7 @@ shared_examples_for "example app with orm_adapter" do
 
       describe "(:offset => <offset number>) with limit (as DataMapper doesn't allow offset on its own)" do
         it "should return an offset set of matching models" do
+          skip :dynamoid
           user1 = create_model(user_class, :name => "Fred", :rating => 1)
           user2 = create_model(user_class, :name => "Fred", :rating => 2)
           user3 = create_model(user_class, :name => "Betty", :rating => 3)
@@ -215,6 +225,7 @@ shared_examples_for "example app with orm_adapter" do
       end
 
       it "when attributes contain an has_many assoc, should create a model with the attributes" do
+        skip :dynamoid
         notes = [create_model(note_class), create_model(note_class)]
         user = user_adapter.create!(:notes => notes)
         reload_model(user).notes.should == notes
