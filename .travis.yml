@@ -3,10 +3,14 @@ notifications:
   irc: 'irc.freenode.org#padrino'
   recipients:
     - namusyaka@gmail.com
+before_install: gem install bundler --pre
+install:
+  - gem update --system
+  - bundle update
 matrix:
   allow_failures:
     - rvm: rbx
-
+    - rvm: jruby-19mode
   include:
     - rvm: 1.9.3
       gemfile: Gemfile
