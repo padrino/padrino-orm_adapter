@@ -1,33 +1,33 @@
 require 'spec_helper'
 require 'orm_adapter/example_app_shared'
 
-if !defined?(ActiveRecord::Base)
-  puts "** require 'active_record' to run the specs in #{__FILE__}"
+if !defined?(MiniRecord::AutoSchema)
+  puts "** require 'mini_record' to run the specs in #{__FILE__}"
 else
   ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => ":memory:")
 
-  ActiveRecord::Migration.suppress_messages do
-    ActiveRecord::Schema.define(:version => 0) do
-      create_table(:users, :force => true) {|t| t.string :name; t.integer :rating; }
-      create_table(:notes, :force => true) {|t| t.belongs_to :owner, :polymorphic => true }
-    end
-  end
-
-  module ArOrmSpec
+  module MrOrmSpec
     class User < ActiveRecord::Base
+      field :name, :as => :string
+      field :rating, :as => :integer
       has_many :notes, :as => :owner
     end
 
     class AbstractNoteClass < ActiveRecord::Base
+      field :owner, :as => :references
+      belongs_to :owner, :polymorphic => true
       self.abstract_class = true
     end
 
     class Note < AbstractNoteClass
+      field :owner, :as => :references
       belongs_to :owner, :polymorphic => true
     end
 
+    ActiveRecord::Base.auto_upgrade!
+
     # here be the specs!
-    describe '[ActiveRecord orm adapter]' do
+    describe '[MiniRecord orm adapter]' do
       before do
         User.delete_all
         Note.delete_all

@@ -16,3 +16,4 @@ require 'padrino/orm_adapter/adapters/data_mapper'   if defined?(DataMapper::Res
 require 'padrino/orm_adapter/adapters/mongoid'       if defined?(Mongoid::Document)
 require 'padrino/orm_adapter/adapters/mongo_mapper'  if defined?(MongoMapper::Document)
 require 'padrino/orm_adapter/adapters/sequel'        if defined?(Sequel::Model)
+require 'padrino/orm_adapter/adapters/dynamoid'      if defined?(Dynamoid::Document)
