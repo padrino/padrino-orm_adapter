@@ -32,5 +32,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sequel", "~> 4.11"
   s.add_development_dependency "dynamoid", "~> 0.7.1"
   s.add_development_dependency "fake_dynamo", "~> 0.1.4"
+  s.add_development_dependency "mini_record", "~> 0.4.5"
 end
 
