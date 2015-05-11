@@ -43,6 +43,8 @@ else
     :use_ssl => false
   })
 
+  sleep 1
+
   Dynamoid.configure do |config|
     config.adapter   = "aws_sdk"
     config.namespace = "orm_adapter-dynamoid_test"
