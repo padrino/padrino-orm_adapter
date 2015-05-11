@@ -6,16 +6,7 @@ if !defined?(MiniRecord::AutoSchema)
 else
   ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => ":memory:")
 
-=begin
-  ActiveRecord::Migration.suppress_messages do
-    ActiveRecord::Schema.define(:version => 0) do
-      create_table(:users, :force => true) {|t| t.string :name; t.integer :rating; }
-      create_table(:notes, :force => true) {|t| t.belongs_to :owner, :polymorphic => true }
-    end
-  end
-=end
-
-  module ArOrmSpec
+  module MrOrmSpec
     class User < ActiveRecord::Base
       field :name, :as => :string
       field :rating, :as => :integer
@@ -33,8 +24,7 @@ else
       belongs_to :owner, :polymorphic => true
     end
 
-    User.auto_upgrade!
-    Note.auto_upgrade!
+    ActiveRecord::Base.auto_upgrade!
 
     # here be the specs!
     describe '[MiniRecord orm adapter]' do
