@@ -18,7 +18,7 @@ module Dynamoid
       end
 
       def get!(id)
-        klass.find_by_id(wrap_key(id)) || raise(Dynamoid::Document::DocumentNotFound)
+        klass.find_by_id(wrap_key(id)) || raise(Dynamoid::Errors::DocumentNotFound)
       end
 
       def get(id)
