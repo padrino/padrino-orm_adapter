@@ -5,6 +5,11 @@ else
   require 'fileutils'
 
   module FakeDynamo
+    class Server
+      def pp(*); end
+      def puts(*); end
+    end
+
     class Storage
       def initialize
         delete_db
