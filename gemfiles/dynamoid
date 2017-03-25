@@ -1,0 +1,9 @@
+source "https://rubygems.org"
+
+gemspec :path => '..'
+
+gem 'activesupport', '~> 3.2'
+gem 'dynamoid', '~> 0.7'
+gem 'fake_dynamo', '~> 0.1.4'
+gem 'aws-sdk', '~> 1.6'
+gem 'nokogiri', '~> 1.5.0'
