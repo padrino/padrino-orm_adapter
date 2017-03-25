@@ -33,6 +33,8 @@ else
       end
 
       it_should_behave_like "example app with orm_adapter" do
+        let(:nonexistent_id_error) { MongoMapper::DocumentNotFound }
+        let(:unknown_attribute_error) { BSON::InvalidDocument }
         let(:user_class) { User }
         let(:note_class) { Note }
       end

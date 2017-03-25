@@ -68,7 +68,7 @@ shared_examples_for "example app with orm_adapter" do
       end
 
       it "should raise an error if there is no instance with that id" do
-        expect { user_adapter.get!("nonexistent id") }.to raise_error
+        expect { user_adapter.get!("nonexistent id") }.to raise_error(nonexistent_id_error)
       end
     end
 
@@ -215,7 +215,7 @@ shared_examples_for "example app with orm_adapter" do
       end
 
       it "should raise error when create fails" do
-        expect { user_adapter.create!(:user => create_model(note_class)) }.to raise_error
+        expect { user_adapter.create!(:user => create_model(note_class)) }.to raise_error(unknown_attribute_error)
       end
 
       it "when attributes contain an associated object, should create a model with the attributes" do

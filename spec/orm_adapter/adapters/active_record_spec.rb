@@ -34,6 +34,8 @@ else
       end
 
       it_should_behave_like "example app with orm_adapter" do
+        let(:nonexistent_id_error) { ActiveRecord::RecordNotFound }
+        let(:unknown_attribute_error) { ActiveRecord::UnknownAttributeError }
         let(:user_class) { User }
         let(:note_class) { Note }
       end

@@ -35,6 +35,8 @@ else
       end
 
       it_should_behave_like "example app with orm_adapter" do
+        let(:nonexistent_id_error) { DataMapper::ObjectNotFoundError }
+        let(:unknown_attribute_error) { ArgumentError }
         let(:user_class) { User }
         let(:note_class) { Note }
 

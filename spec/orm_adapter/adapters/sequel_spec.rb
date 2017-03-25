@@ -34,6 +34,8 @@ else
       end
 
       it_should_behave_like "example app with orm_adapter" do
+        let(:nonexistent_id_error) { Sequel::NoMatchingRow }
+        let(:unknown_attribute_error) { Sequel::MassAssignmentRestriction }
         let(:user_class) { User }
         let(:note_class) { Note }
 
