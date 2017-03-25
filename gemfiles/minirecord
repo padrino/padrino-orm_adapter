@@ -1,0 +1,6 @@
+source "https://rubygems.org"
+
+gemspec :path => '..'
+
+gem 'activerecord', '~> 3.2'
+gem 'mini_record', '~> 0.4'

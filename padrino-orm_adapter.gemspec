@@ -18,20 +18,12 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "bundler", ">= 1.0.0"
-  s.add_development_dependency "git", ">= 1.2.5"
-  s.add_development_dependency "yard", ">= 0.6.0"
-  s.add_development_dependency "rake", ">= 0.8.7"
-  s.add_development_dependency "activerecord", ">= 3.2.15"
-  s.add_development_dependency "mongoid", "~> 2.8.0"
-  s.add_development_dependency "mongo_mapper", "~> 0.11.0"
-  s.add_development_dependency "rspec", ">= 2.4.0"
-  s.add_development_dependency "datamapper", ">= 1.0"
-  s.add_development_dependency "dm-sqlite-adapter", ">= 1.0"
-  s.add_development_dependency "dm-active_model", ">= 1.0"
-  s.add_development_dependency "sequel", "~> 4.11"
-  s.add_development_dependency "dynamoid", "~> 0.7.1"
-  s.add_development_dependency "fake_dynamo", "~> 0.1.4"
-  s.add_development_dependency "mini_record", "~> 0.4.5"
-end
+  s.add_development_dependency 'rake', '>= 0.8.7'
+  s.add_development_dependency 'rspec', '>= 3.0.0'
 
+  if RUBY_ENGINE == 'jruby'
+    s.add_development_dependency "jdbc-sqlite3", "~> 3.7.2"
+  else
+    s.add_development_dependency "sqlite3", '>= 1.3.2'
+  end
+end

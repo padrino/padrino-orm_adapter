@@ -1,63 +1,50 @@
 language: ruby
+sudo: false
+cache: bundler
+branches:
+  only:
+    - master
 notifications:
   irc: 'irc.freenode.org#padrino'
   recipients:
     - namusyaka@gmail.com
+    - ujifgc@gmail.com
 before_install: gem install bundler --pre
 install:
   - gem update --system
   - bundle update
 matrix:
   allow_failures:
-    - rvm: rbx
-    - rvm: jruby-19mode
+    - rvm: rbx-2.2.7
+    - rvm: jruby-head
   include:
+    - rvm: 2.1.5
+      gemfile: gemfiles/datamapper
+
+    - rvm: 2.1.5
+      gemfile: gemfiles/dynamoid
+
+    - rvm: 2.1.5
+      gemfile: gemfiles/minirecord
+
+    - rvm: 2.1.5
+      gemfile: gemfiles/mongoid
+      services: mongodb
+
+    - rvm: 2.1.5
+      gemfile: gemfiles/mongomapper
+      services: mongodb
+
+    - rvm: 2.1.5
+      gemfile: gemfiles/sequel
+
+    - rvm: rbx-2.2.7
+    - rvm: jruby-9.1.5.0
+    - rvm: jruby-head
     - rvm: 1.9.3
-      gemfile: Gemfile
-      services: mongodb
-
     - rvm: 2.0.0
-      gemfile: Gemfile
-      services: mongodb
-
-    - rvm: 2.1.0
-      gemfile: Gemfile
-      services: mongodb
-
-    - rvm: jruby-19mode
-      gemfile: Gemfile
-      services: mongodb
-
-    - rvm: rbx
-      gemfile: Gemfile
-      services: mongodb
-
-    - rvm: 1.9.3
-      gemfile: gemfiles/activerecord-4.0.gemfile
-
-    - rvm: 2.0.0
-      gemfile: gemfiles/activerecord-4.0.gemfile
-
-    - rvm: 2.1.0
-      gemfile: gemfiles/activerecord-4.0.gemfile
-
-    - rvm: jruby-19mode
-      gemfile: gemfiles/activerecord-4.0.gemfile
-
-    - rvm: rbx
-      gemfile: gemfiles/activerecord-4.0.gemfile
-
-    - rvm: 1.9.3
-      gemfile: gemfiles/activerecord-4.1.gemfile
-
-    - rvm: 2.0.0
-      gemfile: gemfiles/activerecord-4.1.gemfile
-
-    - rvm: 2.1.0
-      gemfile: gemfiles/activerecord-4.1.gemfile
-
-    - rvm: jruby-19mode
-      gemfile: gemfiles/activerecord-4.1.gemfile
-
-    - rvm: rbx
-      gemfile: gemfiles/activerecord-4.1.gemfile
+    - rvm: 2.1.5
+    - rvm: 2.2.2
+    - rvm: 2.3.3
+    - rvm: 2.4.1
+    - rvm: ruby-head
